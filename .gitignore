@@ -1,2 +1,5 @@
+db/
 local.py
+tracker
+.gitmodules
 *.pyc
