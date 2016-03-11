@@ -18,6 +18,10 @@ as this would be better handled by a full installer.
 3. Install pip (Follow the directions here: https://pip.pypa.io/en/stable/installing/) This is the package management system
    we use with the tracker, and its generally the best option for getting python packages.
 4. Clone this repository, typically I put it in a folder called `donations` (and will call it that for the rest of this list). 
+   1. Optionally install virtualenv (http://virtualenv.readthedocs.org/en/latest/installation.html). If you use this to
+      create your Python environment (directions: http://virtualenv.readthedocs.org/en/latest/userguide.html), you can
+      install various Python libraries in different containers without affecting one another and also without needing
+      administrator/sudo access.
    ```> git clone https://github.com/GamesDoneQuick/donation-tracker-toplevel.git donations```
 5. Make an empty directory under `donations` called `db`. This is where you can keep the working copy of your sqlite database. 
    By default, the settings are such that one called `db/testdb` will be created, but of course you can modify that to suit 
