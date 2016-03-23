@@ -1,5 +1,5 @@
 db/
 local.py
-tracker
+tracker/
 .gitmodules
 *.pyc
