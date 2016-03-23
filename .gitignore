@@ -1,5 +1,6 @@
 db/
-local.py
 tracker/
+.idea/
+local.py
 .gitmodules
 *.pyc
