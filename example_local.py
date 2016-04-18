@@ -28,11 +28,15 @@ TIME_ZONE = 'America/New_York'
 # set this to your site's prefix, This allows handling multiple deployments from a common url base
 SITE_PREFIX = '/'
 
+# this affects how sessions are encoded in the database, and a couple other django-provided
+# POSTs and whatnot. you should have all servers in the same database using the same key,
+# and (ideally) never have to change it, though really just using this value for local dev
+# is fine too
 SECRET_KEY = 'IHaveNoIdeaWhatThisIsOrWhatItDoes'
 
 STATICFILES_DIRS = (
   os.path.abspath('tracker/static/'),
-);
+)
 
 STATIC_URL = "/static" + SITE_PREFIX
 STATIC_ROOT = "/var/www/static" + SITE_PREFIX
