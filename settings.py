@@ -152,6 +152,7 @@ INSTALLED_APPS = (
     'timezone_field',
     'ajax_select',
     'mptt',
+    'rest_framework',
 )
 
 EMAIL_BACKEND = local.EMAIL_BACKEND
