@@ -1,6 +1,9 @@
 # Django settings for donations project.
 
-import local
+try:
+    import local
+except ImportError:
+    import example_local as local
 from django.core.urlresolvers import reverse
 import itertools
 import os
