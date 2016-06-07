@@ -48,10 +48,10 @@ USE_I18N = True
 
 gettext = lambda x: x
 LANGUAGES = (
-#	('de',gettext('German')), 
-	('en',gettext('English')), 
+#	('de',gettext('German')),
+	('en',gettext('English')),
 #	('ja',gettext('Japanese')),
-#	('nl',gettext('Dutch')), 
+#	('nl',gettext('Dutch')),
 #	('pl',gettext('Polish')),
 )
 
@@ -89,8 +89,6 @@ STATICFILES_DIRS = local.STATICFILES_DIRS
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'webpack.django_integration.WebpackFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder', 
 )
 
 # Make this unique, and don't share it with anybody.
@@ -100,7 +98,6 @@ SECRET_KEY = local.SECRET_KEY
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -110,8 +107,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 SESSION_COOKIE_NAME = 'tracker_session'
@@ -120,12 +115,6 @@ ROOT_URLCONF = 'urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'wsgi.application'
-
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
@@ -149,6 +138,7 @@ INSTALLED_APPS = (
     'post_office',
     'paypal.standard.ipn',
     'tracker',
+    'tracker_ui',
     'timezone_field',
     'ajax_select',
     'mptt',
