@@ -61,4 +61,4 @@ RUN python manage.py createsuperuser --noinput --email nobody@example.com --user
 RUN yes ${superuserpassword} | python manage.py changepassword ${superusername}
 
 EXPOSE 8080
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8088"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
