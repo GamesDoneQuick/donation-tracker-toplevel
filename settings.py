@@ -89,7 +89,6 @@ STATICFILES_DIRS = local.STATICFILES_DIRS
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'webpack.django_integration.WebpackFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder', 
 )
 
