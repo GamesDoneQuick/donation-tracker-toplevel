@@ -79,4 +79,4 @@ You can also download the latest image from [Dockerhub](https://hub.docker.com/r
 
 ## Contact
 
-If you have any questions, or would like some help getting set-up, or are interested in contributing, please don't hesitate to contact me at [stephen.kiazyk@gamesdonequick.com](stephen.kiazyk@gamesdonequick.com).
+If you have any questions, or would like some help getting set-up, or are interested in contributing, please don't hesitate to contact us at [tracker@gamesdonequick.com](tracker@gamesdonequick.com).
