@@ -1,0 +1,3 @@
+-r ./tracker/requirements.txt
+-r ./tracker-ui/requirements.txt
+

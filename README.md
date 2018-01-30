@@ -20,15 +20,13 @@ In order to deploy the tracker, some boilerplate code is neccessary for configur
     2. There are some other config variables related to timezone, e-mail, google docs, and giantbomb's API. None of these are neccessary to get started, and mostly can be ignored unless you are interested in that specific feature. Documentation on these fields is lacking, but it shouldn't be too diffficult to figure out how they work if you take a look at `settings.py`.
 1. Clone the submodules.
     ```> git submodule update --init```
-    1. This will clone `tracker` (the main backend and the classic frontend), `tracker_ui` (the fancy new experimental Javascript UI), and GDQ's custom branch of `django-paypal`.
+    1. This will clone `tracker` (the main backend and the classic frontend), `tracker_ui` (the fancy new experimental Javascript UI).
 1. Download the requirements in using pip:
     ```> pip install -r tracker/requirements.txt```
     ```> pip install -r tracker_ui/requirements.txt```
     1. If you are using Windows, you may need to delete the lines containing `psycopg2` and `chromium-compact-language-detector` from `tracker/requirements.txt` (both are optional, and require compilation of C code, which is typically a hassle for people in a Windows environment).
     2. If you are under 'nix or Mac, you'll probably need to `sudo` this/run as administrator, unless you're using `direnv` as suggested above.
     3. The default pip configuration performs a fresh install of all packages, meaning that previously installed packages will be uninstalled before being reinstalled. If you get any exceptions during uninstallation, you can try the flag `--ignore-installed` to leave those packages alone and continue with other packages.
-1. Install the custom branch of `django-paypal`. Depending on how you have your Python paths set up, this may not be required.
-    ```> pip install ./django-paypal```
 1. Initialize the database. This app, and all the apps it depends on, can be initialized into the database using django's migrate command, `python manage.py migrate`. Notes:
     1. This is the actual command that will create the `db/testdb` file on your machine (if it does not exist already).
     2. If you are using a different location, or a different database type, you will need to make sure the permissions and settings are set up correctly.
