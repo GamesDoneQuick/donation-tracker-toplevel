@@ -1,3 +1,1 @@
 -r ./tracker/requirements.txt
--r ./tracker_ui/requirements.txt
-

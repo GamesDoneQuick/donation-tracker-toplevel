@@ -11,8 +11,6 @@ import os
 BASE_DIR = os.path.dirname(__file__)
 
 DEBUG = local.DEBUG
-TEMPLATE_DEBUG = DEBUG
-TEMPLATE_STRING_IF_INVALID = 'Invalid Variable: %s'
 
 ALLOWED_HOSTS = local.ALLOWED_HOSTS
 
@@ -97,11 +95,29 @@ STATICFILES_FINDERS = (
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = local.SECRET_KEY
 
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+                "tracker.context_processors.booleans",
+            ],
+            'debug': DEBUG,
+            'string_if_invalid': 'Invalid Variable: %s',
+        },
+    },
+]
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -119,18 +135,7 @@ ROOT_URLCONF = 'urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'wsgi.application'
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.static",
-    "django.core.context_processors.request",
-    "django.contrib.messages.context_processors.messages",
-    "tracker.context_processors.booleans",
-)
-
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -141,11 +146,10 @@ INSTALLED_APPS = (
     'post_office',
     'paypal.standard.ipn',
     'tracker',
-    'tracker_ui',
     'timezone_field',
     'ajax_select',
     'mptt',
-)
+] + local.ADDITIONAL_APPS
 
 EMAIL_BACKEND = local.EMAIL_BACKEND
 
@@ -162,10 +166,6 @@ AUTHENTICATION_BACKENDS = (
 
 AUTH_PROFILE_MODULE = 'tracker.UserProfile'
 
-if local.HAS_GDOC:
-  GDOC_USERNAME = local.GDOC_USERNAME
-  GDOC_PASSWORD = local.GDOC_PASSWORD
-
 if local.HAS_EMAIL:
   EMAIL_HOST = local.EMAIL_HOST
   EMAIL_PORT = local.EMAIL_PORT
@@ -173,10 +173,6 @@ if local.HAS_EMAIL:
   EMAIL_HOST_PASSWORD = local.EMAIL_HOST_PASSWORD
   MANDRILL_API_KEY = local.EMAIL_HOST_PASSWORD # the API key is the same as the SMTP password
   EMAIL_FROM_USER = local.EMAIL_FROM_USER
-
-if local.HAS_GOOGLE_APP_ID:
-  GOOGLE_CLIENT_ID = local.GOOGLE_CLIENT_ID
-  GOOGLE_CLIENT_SECRET = local.GOOGLE_CLIENT_SECRET
 
 if local.HAS_GIANTBOMB_API_KEY:
   GIANTBOMB_API_KEY = local.GIANTBOMB_API_KEY
@@ -229,7 +225,8 @@ LOGGING = {
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': '/var/tmp/django_cache',
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        # 'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        # 'LOCATION': '/var/tmp/django_cache',
     }
 }

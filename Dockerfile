@@ -15,7 +15,7 @@ RUN set -ex \
   done
 
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 5.11.1
+ENV NODE_VERSION 9.5.0
 
 RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
   && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
@@ -33,21 +33,16 @@ RUN apt-get update && apt-get install -y \
 		locales-all \
 	--no-install-recommends && rm -rf /var/lib/apt/lists/*
 
+RUN npm i -g yarn
+
 RUN mkdir -p /usr/src/app/tracker /usr/src/app/tracker_ui /usr/src/app/db
 COPY tracker/requirements.txt /usr/src/app/tracker/
-RUN (cd /usr/src/app/tracker && pip install --no-cache-dir -r requirements.txt)
-
-COPY tracker_ui/requirements.txt /usr/src/app/tracker_ui/
-COPY tracker_ui/package.json /usr/src/app/tracker_ui/
-COPY tracker_ui/npm-shrinkwrap.json /usr/src/app/tracker_ui/
-RUN (cd /usr/src/app/tracker_ui && pip install --no-cache-dir -r requirements.txt && npm i)
-
-COPY django-paypal /usr/src/app/django-paypal
-RUN (cd /usr/src/app/django-paypal && python setup.py install)
+COPY tracker/package.json /usr/src/app/tracker/
+COPY tracker/yarn.lock /usr/src/app/tracker/
+RUN (cd /usr/src/app/tracker && pip install --no-cache-dir -r requirements.txt && yarn)
 
 COPY *.py *.json /usr/src/app/
 COPY tracker/ /usr/src/app/tracker/
-COPY tracker_ui/ /usr/src/app/tracker_ui/
 
 WORKDIR /usr/src/app
 

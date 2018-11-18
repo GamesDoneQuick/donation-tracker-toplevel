@@ -11,10 +11,10 @@ DEBUG = True
 
 # You can add your e-mail if you want to receive notifications of failures I think , but its probably not a good idea
 ADMINS = [
-	#('Your Name', 'your_email@example.com'), 
+	#('Your Name', 'your_email@example.com'),
 ]
 
-# You can also make local sqlite databases in your current directory 
+# You can also make local sqlite databases in your current directory
 # if you want to test changes to the data model
 DATABASES = {
     'default': {
@@ -56,3 +56,5 @@ HAS_GIANTBOMB_API_KEY = False
 # GIANTBOMB_API_KEY = 'Itsreallynicetohaveanditsfreetomakeanaccountbutnotneccessary'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+ADDITIONAL_APPS = []
