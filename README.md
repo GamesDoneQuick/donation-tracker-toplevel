@@ -58,9 +58,9 @@ Simply run the build command in the `tracker_ui` directory:
 This does two things:
 
 1. Builds the UI Javascript and CSS bundles and puts them in `tracker/static/gen`.
-1. Outputs a manifest file to `ui_admin.manifest.json` so that Django knows where to find the resulting bundles.
+1. Outputs a manifest file to `ui-tracker.manifest.json` so that Django knows where to find the resulting bundles.
 
-This will allow the tracker UI to function, though if you want to develop with it you'll want to use the development proxy below, otherwise you'll not only have a minified build (difficult to debug!) but you'll have to rerun the command every time you make a change.
+This will allow the tracker UI to function, though if you want to develop with it you'll want to use the development proxy, otherwise you'll not only have a minified build (difficult to debug!) but you'll have to rerun the command every time you make a change.
 
 ## Server deployment
 
