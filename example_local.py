@@ -23,6 +23,8 @@ DATABASES = {
   },
 }
 
+PAYPAL_TEST = True
+
 TIME_ZONE = 'America/New_York'
 
 # set this to your site's prefix, This allows handling multiple deployments from a common url base
@@ -57,4 +59,6 @@ HAS_GIANTBOMB_API_KEY = False
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-ADDITIONAL_APPS = []
+ADDITIONAL_APPS = [
+    # place additional apps here
+]
