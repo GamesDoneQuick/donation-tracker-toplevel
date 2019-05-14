@@ -1,2 +1,9 @@
-.git
 run.py
+
+*.swp
+*.pyc
+*.manifest.json
+
+**/node_modules
+**/.webpack_build_cache
+**/static/gen/
