@@ -27,17 +27,14 @@ PAYPAL_TEST = True
 
 TIME_ZONE = 'America/New_York'
 
-# set this to your site's prefix, This allows handling multiple deployments from a common url base
-SITE_PREFIX = '/'
-
-SECRET_KEY = 'IHaveNoIdeaWhatThisIsOrWhatItDoes'
+SECRET_KEY = 'ChangeMeToARandomString'
 
 STATICFILES_DIRS = (
   os.path.abspath('tracker/static/'),
-);
+)
 
-STATIC_URL = "/static" + SITE_PREFIX
-STATIC_ROOT = "/var/www/static" + SITE_PREFIX
+STATIC_URL = '/static'
+STATIC_ROOT = '/var/www/static'
 
 HAS_GDOC = False
 # GDOC_USERNAME = 'person@gmail.com'
