@@ -1,5 +1,7 @@
 # donation-tracker-toplevel
 
+## AS OF 2019/11/01 PYTHON 3.6/3.7 IS REQUIRED (3.8 IS UNTESTED)
+
 Contains the settings and configuration for creating a simple deploy of the tracker.
 
 In order to deploy the tracker, some boilerplate code is neccessary for configuration and management. The goal of this repository is to make doing so as simple as possible for any given user to get started developing on the tracker.
@@ -7,9 +9,9 @@ In order to deploy the tracker, some boilerplate code is neccessary for configur
 ## Getting a Working Copy of the Tracker
 
 1. [Install Git](http://www.git-scm.com/download). I'm assuming if you're here, you know enough about git and version control to get started. You can check if you have git with the command `which git`, and which version you have with `git --version`.
-1. [Install Python](https://www.python.org/downloads/). Currently, the tracker only supports version 2.7 for now. Thus, getting whatever the latest 2.7 version is ideal. You can determine if Python is installed with the command `which python`, and which version of Python you have with the command `python -V`. Python version 3.x is **not** supported by our code at this time. If someone wants that to change, they will have to do the legwork themselves, we are not in a position to support both versions at this time.
+1. [Install Python](https://www.python.org/downloads/). The code requires 3.6+. 3.8 is not thoroughly tested. You can determine if Python is installed with the command `which python`, and which version of Python you have with the command `python -V`.
 1. [Install pip](https://pip.pypa.io/en/stable/installing/) This is the package management system we use with the tracker, and its generally the best option for getting Python packages.
-1. [Install node](https://nodejs.org/en/download/). Right now only version 9 is tested, but 10 and 11 might also work since Webpack isn't exactly super complicated.
+1. [Install node](https://nodejs.org/en/download/). Currently the JS code is only tested with node 12, but others may work.
 1. [Install yarn](https://yarnpkg.com/en/). If you have npm installed, you can just run `npm i -g yarn` and it should do the right thing.
 1. [Install direnv](https://github.com/direnv/direnv). *Optional, Linux/OSX only* This will help set up an isolated development environment. PyCharm might do the job on Windows, but no promises.
 1. Clone this repository, typically I put it in a folder called `donations`, which is the path to which this repo will be referred for the remainder of these instructions:
@@ -53,7 +55,7 @@ Note that if you change the port that the server is running on you'll need to ed
 ## Building the UI package (release mode)
 
 Simply run the build command in the `tracker` directory:
-```yarn build```
+```> yarn build```
 
 This does two things:
 
@@ -66,7 +68,7 @@ This will allow the tracker UI to function, though if you want to develop with i
 
 There are far too many different ways to deploy the server to go over every possibility here, so you should start with [Deploying Django](https://docs.djangoproject.com/en/1.11/howto/deployment/).
 
-Note that node is NOT required to run the server in a production environment, it is ONLY needed to build the Javascript UI package. You can build it locally and simply copy the necessary files to your server. *Don't forget the manifest file!*
+Node is NOT required to actually run the server, just to build the JS bundles. You can either build them on another machine and copy them (don't forget the manifest file!) or build them on the server, but Node is NOT required to actively serve any network requests.
 
 `PAYPAL_TEST` in the settings file will determine whether or not Paypal operates in sandbox mode. It is no longer possible to set this on a per-event basis.
 
