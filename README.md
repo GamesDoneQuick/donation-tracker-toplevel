@@ -50,7 +50,7 @@ Webpack has a development server that can proxy requests to the backend. Once yo
 
 It defaults to port 8080, so simply visit [http://127.0.0.1:8080/tracker/](http://127.0.0.1:8080/tracker/) and you should be able to view the site just like the Django development server.
 
-Note that if you change the port that the server is running on you'll need to edit `shared.webpack.js` to point to the correct port in the proxy section.
+Note that if you change the port that the server is running on you'll need to edit `webpack.config.js` to point to the correct port in the proxy section.
 
 ## Building the UI package (release mode)
 
