@@ -14,6 +14,7 @@ In order to deploy the tracker, some boilerplate code is neccessary for configur
 1. [Install node](https://nodejs.org/en/download/). Currently the JS code is only tested with node 12, but others may work.
 1. [Install yarn](https://yarnpkg.com/en/). If you have npm installed, you can just run `npm i -g yarn` and it should do the right thing.
 1. [Install direnv](https://github.com/direnv/direnv). *Optional, Linux/OSX only* This will help set up an isolated development environment. PyCharm might do the job on Windows, but no promises.
+    1. If you do _not_ want to use `direnv`, you may need to set the environment variables `LC_ALL` and `LC_CTYPE` when running the server (specifically on macOS). Check `.envrc` for the values to use for these variables.
 1. Clone this repository, typically I put it in a folder called `donations`, which is the path to which this repo will be referred for the remainder of these instructions:
     ```> git clone https://github.com/GamesDoneQuick/donation-tracker-toplevel.git donations```
 1. Make an empty directory under `donations` called `db`. This is where you can keep the working copy of your sqlite database. By default, the settings are such that one called `db/testdb` will be created, but of course you can modify that to suit your needs.
