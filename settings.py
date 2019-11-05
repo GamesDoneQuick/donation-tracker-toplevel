@@ -162,6 +162,8 @@ AUTHENTICATION_BACKENDS = (
 
 AUTH_PROFILE_MODULE = 'tracker.UserProfile'
 
+LOGIN_URL = 'tracker:login'
+
 if local.HAS_EMAIL:
   EMAIL_HOST = local.EMAIL_HOST
   EMAIL_PORT = local.EMAIL_PORT
