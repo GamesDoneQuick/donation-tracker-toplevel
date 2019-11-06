@@ -33,7 +33,7 @@ STATICFILES_DIRS = (
   os.path.abspath('tracker/static/'),
 )
 
-STATIC_URL = '/static'
+STATIC_URL = '/static/'
 STATIC_ROOT = '/var/www/static'
 
 HAS_GDOC = False
