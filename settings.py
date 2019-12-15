@@ -66,7 +66,7 @@ MEDIA_ROOT = ''
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself store your static files
@@ -175,6 +175,15 @@ if local.HAS_EMAIL:
 if local.HAS_GIANTBOMB_API_KEY:
   GIANTBOMB_API_KEY = local.GIANTBOMB_API_KEY
 
+if local.HAS_FILE_STORAGE:
+    DEFAULT_FILE_STORAGE = local.DEFAULT_FILE_STORAGE
+
+if local.HAS_AWS_FILE_STORAGE:
+    AWS_ACCESS_KEY_ID = getattr(local, 'AWS_ACCESS_KEY_ID', '')
+    AWS_SECRET_ACCESS_KEY = getattr(local, 'AWS_SECRET_ACCESS_KEY', '')
+    AWS_STORAGE_BUCKET_NAME = getattr(local, 'AWS_STORAGE_BUCKET_NAME', '')
+    AWS_DEFAULT_ACL = getattr(local, 'AWS_DEFAULT_ACL', 'public-read')
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
@@ -228,3 +237,5 @@ CACHES = {
         # 'LOCATION': '/var/tmp/django_cache',
     }
 }
+
+TRACKER_PAGINATION_LIMIT = 500
