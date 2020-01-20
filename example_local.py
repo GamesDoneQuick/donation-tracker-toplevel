@@ -68,3 +68,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 ADDITIONAL_APPS = [
     # place additional apps here
 ]
+
+SWEEPSTAKES_URL = 'https://example.com/'
+PRIVACY_POLICY_URL = 'https://example.com/'
+GOOGLE_ANALYTICS = ('UA-deadbeef-1', 'example.com')

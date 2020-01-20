@@ -184,6 +184,10 @@ if local.HAS_AWS_FILE_STORAGE:
     AWS_STORAGE_BUCKET_NAME = getattr(local, 'AWS_STORAGE_BUCKET_NAME', '')
     AWS_DEFAULT_ACL = getattr(local, 'AWS_DEFAULT_ACL', 'public-read')
 
+SWEEPSTAKES_URL = getattr(local, 'SWEEPSTAKES_URL', '')
+PRIVACY_POLICY_URL = getattr(local, 'PRIVACY_POLICY_URL', '')
+GOOGLE_ANALYTICS = getattr(local, 'GOOGLE_ANALYTICS', None)
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
