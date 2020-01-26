@@ -1,1 +1,2 @@
 -r ./tracker/requirements.txt
+django-environ==0.4.5

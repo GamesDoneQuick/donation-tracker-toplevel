@@ -2,3 +2,4 @@ local.py
 *.pyc
 .idea
 db/
+.env
