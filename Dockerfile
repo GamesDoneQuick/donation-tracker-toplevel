@@ -17,7 +17,7 @@ RUN pip install --upgrade pip && \
         pip install --no-cache-dir -r requirements.txt
 
 # Install js dependencies
-RUN curl -sL https://deb.nodesource.com/setup_13.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
         apt-get install -y nodejs && \
         npm install -g yarn
 RUN (cd tracker && yarn && yarn build)
