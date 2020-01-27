@@ -17,21 +17,21 @@ In order to deploy the tracker, some boilerplate code is neccessary for configur
 1. [Install direnv](https://github.com/direnv/direnv). *Optional, Linux/OSX only* This will help set up an isolated development environment. PyCharm might do the job on Windows, but no promises. Be sure to add [the relevant direnv configuration](https://github.com/direnv/direnv/wiki/Python#pyenv).
     1. If you do _not_ want to use `direnv`, you may need to set the environment variables `LC_ALL` and `LC_CTYPE` when running the server (specifically on macOS). Check `.envrc` for the values to use for these variables.
 1. Clone this repository, typically I put it in a folder called `donations`, which is the path to which this repo will be referred for the remainder of these instructions:
-    ```> git clone https://github.com/GamesDoneQuick/donation-tracker-toplevel.git donations```
+    ```git clone https://github.com/GamesDoneQuick/donation-tracker-toplevel.git donations```
 1. Make an empty directory under `donations` called `db`. This is where you can keep the working copy of your sqlite database. By default, the settings are such that one called `db/testdb` will be created, but of course you can modify that to suit your needs.
 1. In `donations`, copy `.env.example` to `.env`. This is where you will enter any deployment-specific settings for your instance of the website.
-    ```> cp .env.example .env```
+    ```cp .env.example .env```
     1. The settings are mostly well-documented and it's not necessary to fiddle with them to get started, though you may want to give it a quick skim. If anything is confusing, take a look at `settings.py`.
 1. Clone the submodules.
-    ```> git submodule update --init```
+    ```git submodule update --init```
     1. This will clone `tracker`.
 1. Download the requirements in using pip:
-    ```> pip install -r requirements.txt```
+    ```pip install -r requirements.txt```
     1. If you are using Windows, you may need to delete the lines containing `psycopg2` and `chromium-compact-language-detector` from `tracker/requirements.txt` (both are optional, and require compilation of C code, which is typically a hassle for people in a Windows environment).
     2. If you are under 'nix or Mac, you'll probably need to `sudo` this/run as administrator, unless you're using `direnv` as suggested above.
     3. The default pip configuration performs a fresh install of all packages, meaning that previously installed packages will be uninstalled before being reinstalled. If you get any exceptions during uninstallation, you can try the flag `--ignore-installed` to leave those packages alone and continue with other packages.
 1. Install the required npm packages.
-    ```> cd tracker && yarn```
+    ```cd tracker && yarn```
 1. Initialize the database. This app, and all the apps it depends on, can be initialized into the database using django's migrate command, `python manage.py migrate`. Notes:
     1. This is the actual command that will create the `db/testdb` file on your machine (if it does not exist already).
     2. If you are using a different location, or a different database type, you will need to make sure the permissions and settings are set up correctly.
@@ -49,7 +49,7 @@ You can navigate to the tracker at [http://127.0.0.1:8000/tracker/](http://127.0
 ## Running the UI development server
 
 Webpack has a development server that can proxy requests to the backend. Once you've installed the required packages, you can run the server with the following command while in the `tracker` folder:
-```> yarn start```
+```yarn start```
 
 It defaults to port 8080, so simply visit [http://127.0.0.1:8080/tracker/](http://127.0.0.1:8080/tracker/) and you should be able to view the site just like the Django development server.
 
@@ -59,7 +59,7 @@ Note that if you change the port that the server is running on you'll need to ed
 ## Building the UI package (release mode)
 
 Simply run the build command in the `tracker` directory:
-```> yarn build```
+```yarn build```
 
 This does two things:
 
