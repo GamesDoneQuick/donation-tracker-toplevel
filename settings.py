@@ -1,9 +1,8 @@
 import os
 
+import environ
 from django.core.urlresolvers import reverse
 from django.utils.translation import gettext_lazy as _
-
-import environ
 
 env = environ.Env()
 environ.Env.read_env()
@@ -106,14 +105,15 @@ TEMPLATES = [
     },
 ]
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.common.CommonMiddleware',
-)
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
 
 SESSION_COOKIE_NAME = 'tracker_session'
 
@@ -149,6 +149,7 @@ AUTHENTICATION_BACKENDS = (
 AUTH_PROFILE_MODULE = 'tracker.UserProfile'
 
 LOGIN_URL = 'tracker:login'
+LOGIN_REDIRECT_URL = 'tracker:user_index'
 
 if env.bool('HAS_EMAIL', default=False):
   EMAIL_HOST = env.str('EMAIL_HOST')

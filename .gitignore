@@ -2,4 +2,5 @@ local.py
 *.pyc
 .idea
 db/
+.direnv
 .env
