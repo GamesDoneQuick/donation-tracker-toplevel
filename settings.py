@@ -37,9 +37,6 @@ TIME_ZONE = env.str('TIME_ZONE', default='America/New_York')
 
 LANGUAGE_CODE = 'en-us'
 
-# For the sites framework. We should get rid of this someday.
-SITE_ID = 1
-
 # Add to this list if you have added localization for more languages.
 LANGUAGES = (
 #   ('de', _('German')),
@@ -102,7 +99,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 "tracker.context_processors.booleans",
             ],
-            'debug': DEBUG,
             'string_if_invalid': 'Invalid Variable: %s',
         },
     },
@@ -119,6 +115,7 @@ MIDDLEWARE = [
 ]
 
 SESSION_COOKIE_NAME = 'tracker_session'
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 ROOT_URLCONF = 'urls'
 
@@ -129,7 +126,6 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
@@ -139,6 +135,7 @@ INSTALLED_APPS = [
     'timezone_field',
     'ajax_select',
     'mptt',
+    'channels',
 ] + env.list('ADDITIONAL_APPS', default=[])
 
 # Pull in the tracker's lookup channels
@@ -231,4 +228,14 @@ CACHES = {
         # 'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
         # 'LOCATION': '/var/tmp/django_cache',
     }
+}
+
+ASGI_APPLICATION = "routing.application"
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
 }
