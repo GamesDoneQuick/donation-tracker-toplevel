@@ -1,3 +1,5 @@
+This repository is deprecated and is only being kept for historial reasons. Many of these instructions are out of date and/or unnecessary. Please see the base repo for up to date documentation.
+
 # donation-tracker-toplevel
 
 ## AS OF 2019/11/01 PYTHON 3.6/3.7 IS REQUIRED (3.8 IS UNTESTED)
